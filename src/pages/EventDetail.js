@@ -9,7 +9,6 @@ import {
 } from "react-router-dom";
 import EventItem from "../components/EventItem";
 import EventsList from "../components/EventsList";
-import { base_server_url } from "../configs/params";
 
 const EventDetailPage = () => {
   const params = useParams(); 
@@ -35,7 +34,7 @@ const EventDetailPage = () => {
 export default EventDetailPage;
 
 const loadEvents = async () => {
-  const response = await fetch(base_server_url);
+  const response = await fetch(process.env.REACT_APP_SERVER_URL);
   if (!response.ok) {
     throw json({ message: "Could not fetch data" }, { status: 500 });
   } else {
@@ -45,7 +44,7 @@ const loadEvents = async () => {
 };
 
 const loadEvent = async (eventId) => {
-  const response = await fetch(base_server_url + eventId);
+  const response = await fetch(process.env.REACT_APP_SERVER_URL + eventId);
   if (!response.ok) {
     throw json({ message: "Could not fetch event data" }, { status: 500 });
   } else {
@@ -66,7 +65,7 @@ export const loader = async ({ request, params }) => {
 export const action = async ({ params, request }) => {
   const eventId = params.eventId;
 
-  const response = await fetch(base_server_url + eventId, {
+  const response = await fetch(process.env.REACT_APP_SERVER_URL + eventId, {
     method: request.method,
   });
 

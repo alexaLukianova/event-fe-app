@@ -16,7 +16,7 @@ function EventsPage() {
 }
 
 const loadEvents = async () => {
-  const response = await fetch("http://localhost:8080/events");
+  const response = await fetch(process.env.REACT_APP_SERVER_URL);
   if (!response.ok) {
     console.log("response is not ok")
     throw json({ message: "Could not fetch data" }, { status: 500 });

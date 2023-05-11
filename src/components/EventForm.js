@@ -8,7 +8,6 @@ import {
 } from "react-router-dom";
 
 import classes from "./EventForm.module.css";
-import { base_server_url } from "../configs/params";
 
 function EventForm({ method, event }) {
   const navigate = useNavigate();
@@ -91,7 +90,7 @@ export const action = async ({ request, params }) => {
   const eventId = params.eventId;
   const method = request.method;
 
-  let url = base_server_url;
+  let url = process.env.REACT_APP_SERVER_URL;
 
   if (eventId) {
     url = url + eventId;
