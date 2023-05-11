@@ -8,6 +8,7 @@ import {
 } from "react-router-dom";
 
 import classes from "./EventForm.module.css";
+import { base_server_url } from "../configs/params";
 
 function EventForm({ method, event }) {
   const navigate = useNavigate();
@@ -90,14 +91,11 @@ export const action = async ({ request, params }) => {
   const eventId = params.eventId;
   const method = request.method;
 
-  let url = "http://localhost:8080/events/";
+  let url = base_server_url;
 
   if (eventId) {
-    url = "http://localhost:8080/events/" + eventId;
+    url = url + eventId;
   }
-
-  console.log("Received data");
-  console.log(data);
 
   const eventData = {
     title: data.get("title"),
@@ -105,8 +103,6 @@ export const action = async ({ request, params }) => {
     description: data.get("description"),
     date: data.get("date"),
   };
-
-  console.log(eventData);
 
   const response = await fetch(url, {
     method: method,

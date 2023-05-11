@@ -18,9 +18,12 @@ function EventsPage() {
 const loadEvents = async () => {
   const response = await fetch("http://localhost:8080/events");
   if (!response.ok) {
+    console.log("response is not ok")
     throw json({ message: "Could not fetch data" }, { status: 500 });
   } else {
+    console.log("response is  ok")
     const resData = await response.json();
+    console.log(resData)
     return resData;
   }
 };
