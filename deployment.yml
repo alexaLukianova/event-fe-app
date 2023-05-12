@@ -20,7 +20,7 @@ spec:
         - containerPort: 80
         env:
           - name: REACT_APP_SERVER_URL
-            value: "http://event-be-service:8080/events/"
+            value: " http://127.0.0.1:60527/events/"
         resources:
           requests:
             memory: "300Mi"

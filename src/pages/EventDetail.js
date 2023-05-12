@@ -44,7 +44,7 @@ const loadEvents = async () => {
 };
 
 const loadEvent = async (eventId) => {
-  const response = await fetch(process.env.REACT_APP_SERVER_URL + eventId);
+  const response = await fetch(process.env.REACT_APP_SERVER_URL + "/" + eventId);
   if (!response.ok) {
     throw json({ message: "Could not fetch event data" }, { status: 500 });
   } else {
@@ -65,7 +65,7 @@ export const loader = async ({ request, params }) => {
 export const action = async ({ params, request }) => {
   const eventId = params.eventId;
 
-  const response = await fetch(process.env.REACT_APP_SERVER_URL + eventId, {
+  const response = await fetch(process.env.REACT_APP_SERVER_URL + "/" + eventId, {
     method: request.method,
   });
 

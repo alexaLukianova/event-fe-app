@@ -93,7 +93,7 @@ export const action = async ({ request, params }) => {
   let url = process.env.REACT_APP_SERVER_URL;
 
   if (eventId) {
-    url = url + eventId;
+    url = url + "/" + eventId;
   }
 
   const eventData = {
